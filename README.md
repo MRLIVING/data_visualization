@@ -1,4 +1,4 @@
-# Data_visualization
+# Data Visualization
 
 ## Upload file to GCS
 ### Create a bucket and grain permissions to a service account

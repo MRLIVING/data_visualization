@@ -4,7 +4,7 @@
 ### Install and config [GSUTIL](https://cloud.google.com/storage/docs/gsutil) in stand-alone mode
 * [Installing from tar or PyPI](https://cloud.google.com/storage/docs/gsutil_install#alt-install)
 * [Create a service account for the bucket](https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating)
-* [Authenticate with HMAC](https://cloud.google.com/storage/docs/gsutil_install#hmac)
+* [Authenticate the service account with HMAC](https://cloud.google.com/storage/docs/gsutil_install#hmac)
 
 
 ## Reference

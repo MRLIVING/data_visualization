@@ -2,7 +2,8 @@
 
 ## Upload file to GCS
 ### Install and config [GSUTIL](https://cloud.google.com/storage/docs/gsutil) in stand-alone mode
-* [installing from tar or PyPI](https://cloud.google.com/storage/docs/gsutil_install#alt-install)
+* [Installing from tar or PyPI](https://cloud.google.com/storage/docs/gsutil_install#alt-install)
+* [Authenticate with HMAC](https://cloud.google.com/storage/docs/gsutil_install#hmac)
 
 
 ## Reference

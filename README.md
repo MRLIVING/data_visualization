@@ -8,6 +8,10 @@
 * [Installing from tar or PyPI](https://cloud.google.com/storage/docs/gsutil_install#alt-install)
 * [Authenticate the service account with HMAC](https://cloud.google.com/storage/docs/gsutil_install#hmac)
 
+### Browser bucket
+```
+https://console.cloud.google.com/storage/browser/ecount/ec_data_csv/
+```
 
 ## Reference
 * data schema

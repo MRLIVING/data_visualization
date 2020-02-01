@@ -1,6 +1,6 @@
 var CONF = { 
 //  'redis_host': 'ms-payment.mrl.com.tw',
-  'redis_host': '10.254.103.59',
+  'redis_host': '10.115.53.203',
   'fs_collection': 'mrl_magento2_Transactions_forEC',
   'PATH_LOCAL_OUTPUT': '/tmp/',
   'PATH_GCS_OUTPUT': 'tmp/',
@@ -25,7 +25,7 @@ const moment = require('moment');
 
 //    const file = data;
     var bucketName = 'ecount';
-    var pathFileName   = 'tmp/Transactions_forEC_20191230.csv';
+    var pathFileName   = 'tmp/Transactions_forEC_20200113.csv';
 
     var csvHeaders = [];
 
@@ -34,7 +34,6 @@ const moment = require('moment');
         let proms = [];
 
         let _dt_gcs = filename2dateStr(pathFileName);
-        console.log(`uploaded file in GCS: ${_dt_gcs} with filename: ${pathFileName}`);
 
         const firestore = new Firestore();
         const storage = new Storage();
@@ -48,6 +47,8 @@ const moment = require('moment');
             .pipe(stripBom())
             .pipe(csv())
             .on('headers', (headers) => {
+                console.log(`The file is found in GCS: ${'gs://' + bucketName + '/' +  pathFileName}`);
+
                 csvHeaders = headers;
             })
             .on('data', (line) => {
@@ -75,13 +76,13 @@ const moment = require('moment');
     });
 
 
-    const paidTranFSPaths_prom = l2fs_prom.then(() => {
+    const paidTranFSPaths_prom = l2fs_prom.then(async () => {
         let _dt_gcs = filename2dateStr(pathFileName);
         let dt_beg = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').add(-30, 'days').toDate();
         let dt_end = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').toDate();
-        console.log(`gets transactions between ${dt_beg} and ${dt_end}`);
+        console.log(`Gets transactions between [${moment(dt_beg).format()}, ${moment(dt_end).format()}]`);
 
-        return new Firestore()
+        await new Firestore()
             .collection(CONF.fs_collection)
             .where('_dt_gcs', '>=', dt_beg)
             .where('_dt_gcs', '<=', dt_end)
@@ -98,8 +99,7 @@ const moment = require('moment');
                         callback();
                     });
 
-                var paidTranFSPaths = [];
-                console.log("updating the fields of the paid records in Firestore");
+                console.log("Updates the fields of the paid records in Firestore");
 
                 //-- fill the fields with payment acquirer response data which stores in Redis
                 //   QuerySnapshot, see https://googleapis.dev/nodejs/firestore/latest/QuerySnapshot.html
@@ -120,7 +120,6 @@ const moment = require('moment');
                         .then(tranRdsObjs => {
                             if (tranRdsObjs && 'unima' in tranRdsObjs && 0 == tranRdsObjs.unima.status) {
                                 let docPath = CONF.fs_collection + '/' + qDocSnapshot.id;
-                                paidTranFSPaths.push(docPath);
 
                                 const doc = firestore.doc(docPath);
                                 return doc.update({
@@ -134,19 +133,34 @@ const moment = require('moment');
                         });
                 });
 
-                console.log("getting all transactions which have paid and store info in Redis");
+                console.log("Waits for updates of all paid transactions in Firestore");
 
                 //-- promise.allsettled, https://www.npmjs.com/package/promise.allsettled
                 let allSettled = require('promise.allsettled');
                 return allSettled(promises)
                     .then(() => {
                         rds.quit();
-                        return paidTranFSPaths;
                     });
             });
-///            .then(paidTranFSPaths => {
-///                return paidTranFSPaths;
-///            });
+
+        var paidTranFSPaths = [];
+        let dt_beg_deposit = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').toDate();
+        let dt_end_deposit = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').add(+1, 'days').toDate();
+        console.log(`Gets the transactions whose deposit datetime within [${moment(dt_beg_deposit).format()}, ${moment(dt_end_deposit).format()})`);
+        await new Firestore()
+            .collection(CONF.fs_collection)
+            .where('deposit_date', '>=', dt_beg_deposit)
+            .where('deposit_date', '<',  dt_end_deposit)
+            .get()
+            .then(qSnapshot => {
+                qSnapshot.docs.map(qDocSnapshot => {
+                    let docPath = CONF.fs_collection + '/' + qDocSnapshot.id;
+                    paidTranFSPaths.push(docPath);
+                })
+            });
+
+//        console.log(paidTranFSPaths);
+        return paidTranFSPaths;
     });
 
     let paidTrans = paidTranFSPaths_prom.then(paidTranFSPaths => {
@@ -192,43 +206,38 @@ const moment = require('moment');
         //   see https://www.npmjs.com/package/csv-writer
         const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
         const csvStringifier = createCsvStringifier({
-///            path: localPath,
             header: id2title_pairs 
         });
-///        await csvWriter.writeRecords(trans);
+
         csvTrans_header_str  = csvStringifier.getHeaderString();
         csvTrans_records_str = csvStringifier.stringifyRecords(trans);
 //        console.log(csvTrans_header_str);
 //        console.log(csvTrans_records_str);
 
-        console.log('write to local csv done.');
+        console.log(`Writes the results to GCS: ${'gs://' + bucketName + '/' + CONF.PATH_GCS_OUTPUT + fileName}`);
 
         const storage = new Storage();
-        return storage
+        let save2gcs_proms = storage
             .bucket(bucketName)
             .file(CONF.PATH_GCS_OUTPUT + fileName)
             .save('\ufeff' + csvTrans_header_str + csvTrans_records_str)
             .catch(err => {
                 console.error(err);
             });
-         
 
-///        return storage.bucket(bucketName)
-///            .upload(localPath, {
-///                destination: CONF.PATH_GCS_OUTPUT + fileName 
-///            })
-///            .then(rs => console.log(`upload to gs://${rs[1].bucket}/${rs[1].name} done.`))
-///            .catch(err => console.error(err));
-
+        return save2gcs_proms
+            .then(() => {
+                console.log('... done.');
+            });
     });
 
 
-console.log('main thread has run to end'); 
+console.log('main thread has run to the end'); 
 
 
-//
+///
 //  get date from filename, e.g. Transactions_forEC_20191230.csv
-//
+///
 function filename2dateStr(fname) {
     let yyyymmdd = fname.match(/_\d+\.csv/g)[0].split('_')[1].split('.csv')[0];
     let dt_str = moment(yyyymmdd + ' 00:00:00', 'YYYYMMDD HH:mm:ss');

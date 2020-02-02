@@ -8,7 +8,7 @@ var CONF = {
 
 const {Storage} = require('@google-cloud/storage');
 const {Firestore} = require('@google-cloud/firestore');
-//const {BigQuery} = require('@google-cloud/bigquery');
+const {BigQuery} = require('@google-cloud/bigquery');
 const readline = require('readline');
 const csv = require('csv-parser')
 const stripBom = require('strip-bom-stream');
@@ -25,7 +25,7 @@ const moment = require('moment');
 
 //    const file = data;
     var bucketName = 'ecount';
-    var pathFileName   = 'tmp/Transactions_forEC_20200113.csv';
+    var pathFileName   = 'tmp/Transactions_forEC_20191230.csv';
 
     var csvHeaders = [];
 
@@ -33,7 +33,7 @@ const moment = require('moment');
     const l2fs_prom = new Promise((resolve, reject) => {
         let proms = [];
 
-        let _dt_gcs = filename2dateStr(pathFileName);
+        let _dt_fnSuffix = filename2dateStr(pathFileName);
 
         const firestore = new Firestore();
         const storage = new Storage();
@@ -52,7 +52,7 @@ const moment = require('moment');
                 csvHeaders = headers;
             })
             .on('data', (line) => {
-                line._dt_gcs = new Date(_dt_gcs);
+                line._dt_fnSuffix = new Date(_dt_fnSuffix);
                 
                 //-- set an new document into firestore
                 //   firestore.doc(), https://googleapis.dev/nodejs/firestore/latest/Firestore.html#doc
@@ -77,15 +77,15 @@ const moment = require('moment');
 
 
     const paidTranFSPaths_prom = l2fs_prom.then(async () => {
-        let _dt_gcs = filename2dateStr(pathFileName);
-        let dt_beg = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').add(-30, 'days').toDate();
-        let dt_end = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').toDate();
-        console.log(`Gets transactions between [${moment(dt_beg).format()}, ${moment(dt_end).format()}]`);
+        let _dt_fnSuffix = filename2dateStr(pathFileName);
+        let dt_beg = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(-30, 'days').toDate();
+        let dt_end = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(1, 'days').toDate();
+        console.log(`Gets transactions between [${moment(dt_beg).format()}, ${moment(dt_end).format()})`);
 
         await new Firestore()
             .collection(CONF.fs_collection)
-            .where('_dt_gcs', '>=', dt_beg)
-            .where('_dt_gcs', '<=', dt_end)
+            .where('_dt_fnSuffix', '>=', dt_beg)
+            .where('_dt_fnSuffix', '<',  dt_end)
             .get()
             .then(qSnapshot => {
                 const firestore = new Firestore();
@@ -144,8 +144,8 @@ const moment = require('moment');
             });
 
         var paidTranFSPaths = [];
-        let dt_beg_deposit = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').toDate();
-        let dt_end_deposit = moment(_dt_gcs, 'YYYY-MM-DD HH:mm:ss').add(+1, 'days').toDate();
+        let dt_beg_deposit = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').toDate();
+        let dt_end_deposit = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(+1, 'days').toDate();
         console.log(`Gets the transactions whose deposit datetime within [${moment(dt_beg_deposit).format()}, ${moment(dt_end_deposit).format()})`);
         await new Firestore()
             .collection(CONF.fs_collection)
@@ -189,7 +189,7 @@ const moment = require('moment');
             .then(tran_proms => tran_proms.map(p => p.value));
     });
     
-    paidTrans.then(async (trans) => {
+    let save2gcs = paidTrans.then(async (trans) => {
         id2title_pairs = [];
         csvHeaders.forEach((item, idx, ary) => {
             id2title_pairs.push({id: item, title: item});

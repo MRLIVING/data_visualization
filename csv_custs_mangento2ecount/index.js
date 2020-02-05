@@ -1,10 +1,8 @@
 var CONF = { 
   'redis_host': 'ms-payment.mrl.com.tw',
   'fs_collection': 'mrl_magento2_Customer_forEC',
-//  'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Transactions_',
-  'VALID_INPUT_FILE_PREFIX': 'tmp/Customer_',
-//  'PATH_GCS_OUTPUT': 'ec_data_csv/output/',
-  'PATH_GCS_OUTPUT': 'tmp/',
+  'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Customer_',
+  'PATH_GCS_OUTPUT': 'ec_data_csv/output/'
 };
 
 const {Storage} = require('@google-cloud/storage');
@@ -21,12 +19,13 @@ const moment = require('moment');
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-//exports.orderFilter = (data, context, callback) => {
-//    console.log(`Event Type: ${context.eventType}`);
+exports.custFilter = (data, context, callback) => {
+    console.log(`Event Type: ${context.eventType}`);
 
-//    const file = data;
-    var bucketName   = 'ecount';
-    var pathFileName = 'tmp/Customer_forEC_20200203.csv';
+    const file = data;
+    var bucketName   = file.bucket;
+    var pathFileName = file.name;
+
 
     console.log(`gets an event of file: ${pathFileName} in bucket gs://${bucketName}`);
   
@@ -184,9 +183,6 @@ const moment = require('moment');
 				.then(docSnapshot_prom => docSnapshot_prom)
 				.then(docSnapshot => {
 					let tran = docSnapshot.data();
-///					//-- format field $deposit_date
-///					let dt_str = moment.unix(tran.deposit_date.seconds).format('YYYY-MM-DD HH:mm:ss');
-///					tran.deposit_date = dt_str;
 					return tran;
 				});
 		});
@@ -205,7 +201,7 @@ const moment = require('moment');
 		const path = require('path');
 		let fileName = path.basename(pathFileName);
 		let fNames = fileName.split('.');
-		fNames = [fNames[0], 'filtered', 'filled', fNames[1]];
+		fNames = [fNames[0], 'filtered', fNames[1]];
 		fileName = fNames.join('.');        
 
 		//-- output the result
@@ -234,13 +230,13 @@ const moment = require('moment');
 		return save2gcs_proms
 			.then(() => {
 				console.log('done.');
-//                callback(null, 'Success!');
+                callback(null, 'Success!');
 			});
 	});
 
 	console.log('main thread has run to the end');    
     return save2gcs;
-//};
+};
 
 /**
  *  get date from filename, e.g. Transactions_forEC_20191230.csv

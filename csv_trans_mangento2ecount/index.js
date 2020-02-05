@@ -1,6 +1,5 @@
 var CONF = { 
-//  'redis_host': 'ms-payment.mrl.com.tw',
-  'redis_host': '10.115.53.203',
+  'redis_host': 'ms-payment.mrl.com.tw',
   'fs_collection': 'mrl_magento2_Transactions_forEC',  
   'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Transactions_',
   'PATH_GCS_OUTPUT': 'ec_data_csv/output/',

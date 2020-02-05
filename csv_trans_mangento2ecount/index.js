@@ -20,7 +20,7 @@ const moment = require('moment');
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-exports.orderFilter = (event, context, callback) => {
+exports.transFilter = (event, context, callback) => {
     console.log(`Event Type: ${context.eventType}`);
 
     const file = event;

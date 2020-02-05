@@ -1,8 +1,8 @@
 var CONF = { 
   'redis_host': 'ms-payment.mrl.com.tw',
-  'fs_collection': 'mrl_magento2_Customer_forEC',
-  'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Customer_',
-  'PATH_GCS_OUTPUT': 'ec_data_csv/output/'
+  'fs_collection': 'mrl_magento2_Transactions_forEC',  
+  'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Transactions_',
+  'PATH_GCS_OUTPUT': 'ec_data_csv/output/',
 };
 
 const {Storage} = require('@google-cloud/storage');
@@ -19,13 +19,12 @@ const moment = require('moment');
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-exports.custFilter = (data, context, callback) => {
+exports.orderFilter = (data, context, callback) => {
     console.log(`Event Type: ${context.eventType}`);
 
     const file = data;
     var bucketName   = file.bucket;
     var pathFileName = file.name;
-
 
     console.log(`gets an event of file: ${pathFileName} in bucket gs://${bucketName}`);
   
@@ -34,7 +33,7 @@ exports.custFilter = (data, context, callback) => {
 	    console.log(`an invalid input: ${pathFileName}`);
 	    //-- termination, see https://cloud.google.com/functions/docs/writing/background#function_parameters
         callback();
-        return 0;
+	    return 0;
 	}
       
     var csvHeaders = [];
@@ -64,7 +63,7 @@ exports.custFilter = (data, context, callback) => {
 
 				//-- set an new document into firestore
 				//   firestore.doc(), https://googleapis.dev/nodejs/firestore/latest/Firestore.html#doc
-				const docPath = CONF.fs_collection + '/' + line.website_oid;
+				const docPath = CONF.fs_collection + '/' + line.index_ooid + '_' + line.item_code;
 				const doc = firestore.doc(docPath); 
 				proms.push( doc.set(line) );
 			})
@@ -82,6 +81,7 @@ exports.custFilter = (data, context, callback) => {
 	.catch(err => {
 		console.error(err);
 	});
+
 
 	const paidTranFSPaths_prom = l2fs_prom.then(async () => {
 		let _dt_fnSuffix = filename2dateStr(pathFileName);
@@ -113,8 +113,8 @@ exports.custFilter = (data, context, callback) => {
 				let promises = qSnapshot.docs.map(async (qDocSnapshot) => {
 					let t = qDocSnapshot.data();
 						return new Promise((resolve, reject) => {
-							let id = t.website_oid;
-							rds.get(id, (err, resp) => {
+							let id = t.index_ooid;
+							rds.get(id, (err, resp) => {                                
 								if (err) {
 									reject(err);
 								}
@@ -130,7 +130,8 @@ exports.custFilter = (data, context, callback) => {
 
 								const doc = firestore.doc(docPath);
 								return doc.update({
-                                   _deposit_date: new Date(tranRdsObjs.unima.resp_receive_dt)
+								   authorization_code: tranRdsObjs.unima.auth_code,
+								   deposit_date:       new Date(tranRdsObjs.unima.resp_receive_dt)
 								});
 							}
 						})
@@ -152,11 +153,11 @@ exports.custFilter = (data, context, callback) => {
 		var paidTranFSPaths = [];
 		let dt_beg_deposit = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').toDate();
 		let dt_end_deposit = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(+1, 'days').toDate();
-		console.log(`Gets the customers whose deposit datetime within [${moment(dt_beg_deposit).format()}, ${moment(dt_end_deposit).format()})`);
+		console.log(`Gets the transactions whose deposit datetime within [${moment(dt_beg_deposit).format()}, ${moment(dt_end_deposit).format()})`);
 		await new Firestore()
 			.collection(CONF.fs_collection)
-			.where('_deposit_date', '>=', dt_beg_deposit)
-			.where('_deposit_date', '<',  dt_end_deposit)
+			.where('deposit_date', '>=', dt_beg_deposit)
+			.where('deposit_date', '<',  dt_end_deposit)
 			.get()
 			.then(qSnapshot => {
 				qSnapshot.docs.map(qDocSnapshot => {
@@ -183,6 +184,9 @@ exports.custFilter = (data, context, callback) => {
 				.then(docSnapshot_prom => docSnapshot_prom)
 				.then(docSnapshot => {
 					let tran = docSnapshot.data();
+					//-- format field $deposit_date
+					let dt_str = moment.unix(tran.deposit_date.seconds).format('YYYY-MM-DD HH:mm:ss');
+					tran.deposit_date = dt_str;
 					return tran;
 				});
 		});
@@ -201,7 +205,7 @@ exports.custFilter = (data, context, callback) => {
 		const path = require('path');
 		let fileName = path.basename(pathFileName);
 		let fNames = fileName.split('.');
-		fNames = [fNames[0], 'filtered', fNames[1]];
+		fNames = [fNames[0], 'filtered', 'filled', fNames[1]];
 		fileName = fNames.join('.');        
 
 		//-- output the result

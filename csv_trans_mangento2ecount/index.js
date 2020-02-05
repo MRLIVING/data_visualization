@@ -13,16 +13,17 @@ const csv = require('csv-parser')
 const stripBom = require('strip-bom-stream');
 const moment = require('moment');
 
+
 /**
  * Triggered from a change to a Cloud Storage bucket.
  *
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-exports.orderFilter = (data, context, callback) => {
+exports.orderFilter = (event, context, callback) => {
     console.log(`Event Type: ${context.eventType}`);
 
-    const file = data;
+    const file = event;
     var bucketName   = file.bucket;
     var pathFileName = file.name;
 

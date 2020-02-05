@@ -19,10 +19,10 @@ const moment = require('moment');
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-exports.custFilter = (data, context, callback) => {
+exports.custFilter = (event, context, callback) => {
     console.log(`Event Type: ${context.eventType}`);
 
-    const file = data;
+    const file = event;
     var bucketName   = file.bucket;
     var pathFileName = file.name;
 

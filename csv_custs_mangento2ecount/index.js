@@ -3,11 +3,12 @@ var CONF = {
   'fs_collection': 'mrl_magento2_Customer_forEC',
   'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Customer_',
   'PATH_GCS_OUTPUT': 'ec_data_csv/output/'
+  'BQ_DATASET': 'mrl_magento',
 };
 
 const {Storage} = require('@google-cloud/storage');
 const {Firestore} = require('@google-cloud/firestore');
-//const {BigQuery} = require('@google-cloud/bigquery');
+const {BigQuery} = require('@google-cloud/bigquery');
 const readline = require('readline');
 const csv = require('csv-parser')
 const stripBom = require('strip-bom-stream');
@@ -219,7 +220,7 @@ exports.custFilter = (event, context, callback) => {
 		console.log(`Writes the results to GCS: ${'gs://' + bucketName + '/' + CONF.PATH_GCS_OUTPUT + fileName}`);
 
 		const storage = new Storage();
-		let save2gcs_proms = storage
+		let save2gcs_prom = storage
 			.bucket(bucketName)
 			.file(CONF.PATH_GCS_OUTPUT + fileName)
 			.save('\ufeff' + csvTrans_header_str + csvTrans_records_str)
@@ -227,15 +228,78 @@ exports.custFilter = (event, context, callback) => {
 				console.error(err);
 			});
 
-		return save2gcs_proms
-			.then(() => {
+   		return save2gcs_prom;
+///		return save2gcs_prom
+///			.then(() => {
+///				console.log('done.');
+///                callback(null, 'Success!');
+///			});
+	});
+
+    let rs = save2gcs.then(() => { 
+        let save2bq = paidTrans.then(async (trans) => {
+//            console.log(trans);    
+            const bq = new BigQuery();
+            
+            //-- Dataset.exists
+            //   https://googleapis.dev/nodejs/bigquery/latest/Dataset.html#exists
+            let ds = bq.dataset(CONF.BQ_DATASET);
+            ds = (! (await ds.exists())[0]) ? (await bq.createDataset(CONF.BQ_DATASET))[0] : ds;
+
+            //-- Dataset.CreateTable if the table doesn't exists
+            //   https://googleapis.dev/nodejs/bigquery/latest/Dataset.html#createTable
+            const tbName = path.basename(pathFileName, '.csv');
+            let tb = ds.table(tbName);
+            let header_str = csvHeaders.join(','); 
+            const options = { 
+                schema: header_str
+            };        
+            tb = (! (await tb.exists())[0]) ? (await ds.createTable(tbName, options))[0] : tb; 
+
+            let csvHeader_trans = trans.map(t => {
+                let tt = Object.keys(t)
+                .filter(k => csvHeaders.includes(k))
+                .reduce((obj, k) => {
+                    obj[k] = t[k];
+                    return obj; 
+                }, {});
+
+                return tt;
+            }).map(t => {
+                let row = {
+                    insertId: t.index_ooid + '_' + t.item_code,
+                    json: t
+                };
+
+                return row;                
+            });
+
+            //-- inserts rows with insertId
+            //   https://googleapis.dev/nodejs/bigquery/latest/Table.html#insert
+            let insert_prom = tb.insert(csvHeader_trans, 
+                {
+                    raw: true
+                }
+            )
+            .then(apiResp => {
+                return apiResp[0];
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+            return insert_prom;
+        });
+
+        return save2bq
+            .then(() => {
 				console.log('done.');
                 callback(null, 'Success!');
 			});
-	});
+    });
 
 	console.log('main thread has run to the end');    
-    return save2gcs;
+    return rs;
 };
 
 /**

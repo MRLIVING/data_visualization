@@ -3,6 +3,7 @@ var CONF = {
   'fs_collection': 'mrl_magento2_Transactions_forEC',  
   'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Transactions_',
   'PATH_GCS_OUTPUT': 'ec_data_csv/output/',
+  'BQ_DATASET': 'mrl_magento',
 };
 
 const {Storage} = require('@google-cloud/storage');
@@ -239,8 +240,70 @@ exports.transFilter = (event, context, callback) => {
 			});
 	});
 
+    let save2bq = save2gcs.then(() => { 
+        let insert2bq = paidTrans.then(async (trans) => {
+//            console.log(trans);    
+            const bq = new BigQuery();
+            
+            //-- Dataset.exists
+            //   https://googleapis.dev/nodejs/bigquery/latest/Dataset.html#exists
+            let ds = bq.dataset(CONF.BQ_DATASET);
+            ds = (! (await ds.exists())[0]) ? (await bq.createDataset(CONF.BQ_DATASET))[0] : ds;
+
+            //-- Dataset.CreateTable if the table doesn't exists
+            //   https://googleapis.dev/nodejs/bigquery/latest/Dataset.html#createTable
+            const tbName = path.basename(pathFileName, '.csv');
+            let tb = ds.table(tbName);
+            let header_str = csvHeaders.join(','); 
+            const options = { 
+                schema: header_str
+            };        
+            tb = (! (await tb.exists())[0]) ? (await ds.createTable(tbName, options))[0] : tb; 
+
+            let csvHeader_trans = trans.map(t => {
+                let tt = Object.keys(t)
+                .filter(k => csvHeaders.includes(k))
+                .reduce((obj, k) => {
+                    obj[k] = t[k];
+                    return obj; 
+                }, {});
+
+                return tt;
+            }).map(t => {
+                let row = {
+                    insertId: t.index_ooid + '_' + t.item_code,
+                    json: t
+                };
+
+                return row;
+            });
+
+            //-- inserts rows with insertId
+            //   https://googleapis.dev/nodejs/bigquery/latest/Table.html#insert
+            let insert_prom = tb.insert(csvHeader_trans, 
+                {
+                    raw: true
+                }
+            )
+            .then(apiResp => {
+                return apiResp[0];
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+            return insert_prom;
+        });
+
+        return insert2bq
+            .then(() => {
+				console.log('done.');
+                callback(null, 'Success!');
+			});
+    });
+
 	console.log('main thread has run to the end');    
-    return save2gcs;
+    return save2bq;
 };
 
 /**

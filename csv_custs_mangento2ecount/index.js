@@ -3,15 +3,17 @@ var CONF = {
   'fs_collection': 'mrl_magento2_Customer_forEC',
   'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Customer_',
   'PATH_GCS_OUTPUT': 'ec_data_csv/output/'
+  'BQ_DATASET': 'mrl_magento',
 };
 
 const {Storage} = require('@google-cloud/storage');
 const {Firestore} = require('@google-cloud/firestore');
-//const {BigQuery} = require('@google-cloud/bigquery');
+const {BigQuery} = require('@google-cloud/bigquery');
 const readline = require('readline');
 const csv = require('csv-parser')
 const stripBom = require('strip-bom-stream');
 const moment = require('moment');
+const path = require('path');
 
 /**
  * Triggered from a change to a Cloud Storage bucket.
@@ -74,7 +76,7 @@ exports.custFilter = (event, context, callback) => {
 	})
 	.then((writeResults) => {
 //        console.log(writeResults);
-		//-- wait all transcations set into Firestore
+		//-- wait all Customers set into Firestore
 		//   promise.allsettled, https://github.com/es-shims/Promise.allSettled
 		let allSettled = require('promise.allsettled');
 		return allSettled(writeResults);
@@ -83,11 +85,11 @@ exports.custFilter = (event, context, callback) => {
 		console.error(err);
 	});
 
-	const paidTranFSPaths_prom = l2fs_prom.then(async () => {
+	const paidCustFSPaths_prom = l2fs_prom.then(async () => {
 		let _dt_fnSuffix = filename2dateStr(pathFileName);
 		let dt_beg = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(-30, 'days').toDate();
 		let dt_end = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(1, 'days').toDate();
-		console.log(`Gets transactions between [${moment(dt_beg).format()}, ${moment(dt_end).format()})`);
+		console.log(`Gets Customers between [${moment(dt_beg).format()}, ${moment(dt_end).format()})`);
 
 		await new Firestore()
 			.collection(CONF.fs_collection)
@@ -149,7 +151,7 @@ exports.custFilter = (event, context, callback) => {
 					});
 			});
 
-		var paidTranFSPaths = [];
+		var paidCustFSPaths = [];
 		let dt_beg_deposit = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').toDate();
 		let dt_end_deposit = moment(_dt_fnSuffix, 'YYYY-MM-DD HH:mm:ss').add(+1, 'days').toDate();
 		console.log(`Gets the customers whose deposit datetime within [${moment(dt_beg_deposit).format()}, ${moment(dt_end_deposit).format()})`);
@@ -161,15 +163,15 @@ exports.custFilter = (event, context, callback) => {
 			.then(qSnapshot => {
 				qSnapshot.docs.map(qDocSnapshot => {
 					let docPath = CONF.fs_collection + '/' + qDocSnapshot.id;
-					paidTranFSPaths.push(docPath);
+					paidCustFSPaths.push(docPath);
 				})
 			});
 
-//        console.log(paidTranFSPaths);
-		return paidTranFSPaths;
+//        console.log(paidCustFSPaths);
+		return paidCustFSPaths;
 	});
 
-	let paidTrans = paidTranFSPaths_prom.then(paidTranFSPaths => {
+	let paidCusts = paidTranFSPaths_prom.then(paidTranFSPaths => {
 //        console.log(paidTranFSPaths);
 		const firestore = new Firestore();
 
@@ -192,7 +194,7 @@ exports.custFilter = (event, context, callback) => {
 			.then(tran_proms => tran_proms.map(p => p.value));
 	});
 
-	let save2gcs = paidTrans.then(async (trans) => {
+	let save2gcs = paidCusts.then(async (trans) => {
 		id2title_pairs = [];
 		csvHeaders.forEach((item, idx, ary) => {
 			id2title_pairs.push({id: item, title: item});
@@ -233,6 +235,68 @@ exports.custFilter = (event, context, callback) => {
                 callback(null, 'Success!');
 			});
 	});
+
+    let save2bq = save2gcs.then(() => { 
+        let insert2bq = paidCusts.then(async (custs) => {
+//            console.log(custs);    
+            const bq = new BigQuery();
+            
+            //-- Dataset.exists
+            //   https://googleapis.dev/nodejs/bigquery/latest/Dataset.html#exists
+            let ds = bq.dataset(CONF.BQ_DATASET);
+            ds = (! (await ds.exists())[0]) ? (await bq.createDataset(CONF.BQ_DATASET))[0] : ds;
+
+            //-- Dataset.CreateTable if the table doesn't exists
+            //   https://googleapis.dev/nodejs/bigquery/latest/Dataset.html#createTable
+            const tbName = path.basename(pathFileName, '.csv');
+            let tb = ds.table(tbName);
+            let header_str = csvHeaders.join(','); 
+            const options = { 
+                schema: header_str
+            };        
+            tb = (! (await tb.exists())[0]) ? (await ds.createTable(tbName, options))[0] : tb; 
+
+            let csvHeader_custs = custs.map(t => {
+                let tt = Object.keys(t)
+                .filter(k => csvHeaders.includes(k))
+                .reduce((obj, k) => {
+                    obj[k] = t[k];
+                    return obj; 
+                }, {});
+
+                return tt;
+            }).map(t => {
+                let row = {
+                    insertId: t.index_ooid + '_' + t.item_code,
+                    json: t
+                };
+
+                return row;
+            });
+
+            //-- inserts rows with insertId
+            //   https://googleapis.dev/nodejs/bigquery/latest/Table.html#insert
+            let insert_prom = tb.insert(csvHeader_custs, 
+                {
+                    raw: true
+                }
+            )
+            .then(apiResp => {
+                return apiResp[0];
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+            return insert_prom;
+        });
+
+        return insert2bq
+            .then(() => {
+				console.log('done.');
+                callback(null, 'Success!');
+			});
+    });
 
 	console.log('main thread has run to the end');    
     return save2gcs;

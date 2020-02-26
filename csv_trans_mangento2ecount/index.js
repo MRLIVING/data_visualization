@@ -76,7 +76,7 @@ exports.transFilter = (event, context, callback) => {
 	})
 	.then((writeResults) => {
 //        console.log(writeResults);
-		//-- wait all transcations set into Firestore
+		//-- wait all Transcations set into Firestore
 		//   promise.allsettled, https://github.com/es-shims/Promise.allSettled
 		let allSettled = require('promise.allsettled');
 		return allSettled(writeResults);

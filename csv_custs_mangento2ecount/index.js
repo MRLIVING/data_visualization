@@ -4,7 +4,7 @@ var CONF = {
   'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Customer_',
   'PATH_GCS_OUTPUT': 'ec_data_csv/output/'
   'BQ_DATASET': 'mrl_magento',
-};
+}
 
 const {Storage} = require('@google-cloud/storage');
 const {Firestore} = require('@google-cloud/firestore');
@@ -300,7 +300,7 @@ exports.custFilter = (event, context, callback) => {
 
 	console.log('main thread has run to the end');    
     return save2gcs;
-};
+}
 
 /**
  *  get date from filename, e.g. Transactions_forEC_20191230.csv

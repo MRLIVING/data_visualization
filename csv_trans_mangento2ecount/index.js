@@ -8,11 +8,12 @@ var CONF = {
 
 const {Storage} = require('@google-cloud/storage');
 const {Firestore} = require('@google-cloud/firestore');
-//const {BigQuery} = require('@google-cloud/bigquery');
+const {BigQuery} = require('@google-cloud/bigquery');
 const readline = require('readline');
 const csv = require('csv-parser')
 const stripBom = require('strip-bom-stream');
 const moment = require('moment');
+const path = require('path');
 
 
 /**
@@ -225,7 +226,7 @@ exports.transFilter = (event, context, callback) => {
 		console.log(`Writes the results to GCS: ${'gs://' + bucketName + '/' + CONF.PATH_GCS_OUTPUT + fileName}`);
 
 		const storage = new Storage();
-		let save2gcs_proms = storage
+		let save2gcs_prom = storage
 			.bucket(bucketName)
 			.file(CONF.PATH_GCS_OUTPUT + fileName)
 			.save('\ufeff' + csvTrans_header_str + csvTrans_records_str)
@@ -233,11 +234,7 @@ exports.transFilter = (event, context, callback) => {
 				console.error(err);
 			});
 
-		return save2gcs_proms
-			.then(() => {
-				console.log('done.');
-                callback(null, 'Success!');
-			});
+		return save2gcs_prom;
 	});
 
     let save2bq = save2gcs.then(() => { 

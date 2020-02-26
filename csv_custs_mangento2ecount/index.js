@@ -2,7 +2,7 @@ var CONF = {
   'redis_host': 'ms-payment.mrl.com.tw',
   'fs_collection': 'mrl_magento2_Customer_forEC',
   'VALID_INPUT_FILE_PREFIX': 'ec_data_csv/input/Customer_',
-  'PATH_GCS_OUTPUT': 'ec_data_csv/output/'
+  'PATH_GCS_OUTPUT': 'ec_data_csv/output/',
   'BQ_DATASET': 'mrl_magento',
 }
 

@@ -171,7 +171,7 @@ exports.custFilter = (event, context, callback) => {
 		return paidCustFSPaths;
 	});
 
-	let paidCusts = paidTranFSPaths_prom.then(paidTranFSPaths => {
+	let paidCusts = paidCustFSPaths_prom.then(paidTranFSPaths => {
 //        console.log(paidTranFSPaths);
 		const firestore = new Firestore();
 

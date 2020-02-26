@@ -267,7 +267,7 @@ exports.custFilter = (event, context, callback) => {
                 return tt;
             }).map(t => {
                 let row = {
-                    insertId: t.index_ooid + '_' + t.item_code,
+                    insertId: t.website_oid,
                     json: t
                 };
 

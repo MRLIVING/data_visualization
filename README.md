@@ -16,6 +16,6 @@ https://console.cloud.google.com/storage/browser/ecount/ec_data_csv/
 ```
 
 ## Reference
-* data schema
+* [Schema.org](https://schema.org/)
   * [Order  specification](https://support.google.com/merchants/answer/9130936)
   * [Product data specification](https://support.google.com/merchants/answer/7052112?hl=en)

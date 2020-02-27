@@ -19,3 +19,6 @@ https://console.cloud.google.com/storage/browser/ecount/ec_data_csv/
 * [Schema.org](https://schema.org/)
   * [Order  specification](https://support.google.com/merchants/answer/9130936)
   * [Product data specification](https://support.google.com/merchants/answer/7052112?hl=en)
+* [GA Enhanced Ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)
+  * [Enhanced Ecommerce Data Types and Actions](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce)
+

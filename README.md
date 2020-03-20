@@ -15,6 +15,10 @@
 https://console.cloud.google.com/storage/browser/ecount/ec_data_csv/
 ```
 
+## Prepare and Transform data into Biguqery via. [Dataprep](https://cloud.google.com/dataprep)
+
+
+
 ## Reference
 * [Schema.org](https://schema.org/)
   * [Order  specification](https://support.google.com/merchants/answer/9130936)

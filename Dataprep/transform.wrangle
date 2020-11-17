@@ -1,5 +1,5 @@
 delete row: $sourcerownumber == 1
-// drop col: column22 action: Drop
+drop col: column22 action: Drop
 textformat col: column2, column3, column4, column5, column6, column7, column8, column9, column10, column11, column12, column13, column14, column15, column16, column17, column18, column19, column20, column21 type: trimquotes
 replacepatterns col: column2, column3, column4, column5, column6, column7, column8, column9, column10, column11, column12, column13, column14, column15, column16, column17, column18, column19, column20, column21 with: '' on: /^\t|\t$/ global: true
 header
@@ -59,8 +59,9 @@ derive type: single value: CASE([(MATCHES([category_factory], 'SD', false) || (M
 derive type: single value: CASE([MATCHES([category_region_style], /北歐風沙發|其他北歐家具|美式沙發|法式鄉村/, false), category_region_style, MATCHES([category_style], /MCM/, false), 'MCM', MATCHES([category_fun], /床架|櫃架|燈飾/, false), category_fun, MATCHES([category_material], '大理石', false), '大理石', MATCHES([category_fun], '餐桌', false) && !MATCHES([category_material], '大理石', false) && !MATCHES([category_region_style], /法式鄉村/, false) && !MATCHES([category_style], 'MCM', false), '餐桌', MATCHES([category_fun], /餐椅|板凳|吧椅/, false) && !MATCHES([category_material], '大理石', false) && !MATCHES([category_region_style], /法式鄉村/, false) && !MATCHES([category_style], /MCM/, false) && !MATCHES([category_fun], '辦公椅', false), '餐椅\/板凳\/中島吧擡', MATCHES([category_factory], 'CA', false) && !MATCHES([category_material], '布料', false), '皮沙發', MATCHES([category_mat], /床墊|枕頭|棉被/, false), category_mat, NULL()]) as: 'category_group_alice_tmp'
 rename type: manual mapping: [category_group_alice_tmp,'category_group_alice']
 filter type: custom rowType: single row: MATCHES([email], `{yyyy}/{mm}/{dd}|合計`, false) action: Delete
+derive type: single value: LEFT(order_id, 4) as: 'order_year'
 splitpatterns col: deposit_date type: on on: /[&+,\- ]/ limit: 1
-derive type: single value: CASE([PARSEINT(SUBSTRING(deposit_date1, 0, FIND(deposit_date1, '\/', false, 0))) <= 11,MERGE(['2020',deposit_date1], '\/'),MERGE(['2019',deposit_date1], '\/')]) as: 'deposit_date'
+derive type: single value: CASE([PARSEINT(SUBSTRING(deposit_date1, 0, FIND(deposit_date1, '\/', false, 0))) <= 12,MERGE([order_year,deposit_date1], '\/'),deposit_date1]) as: 'deposit_date'
 settype col: deposit_date datetimeType: 'Datetime','yy-mm-dd','yyyy*mm*dd' type: Datetime
 filter type: custom rowType: single row: ISMISMATCHED(deposit_date, ['Datetime','yy-mm-dd','yyyy*mm*dd']) action: Delete
 derive type: single value: DATEDIF(deposit_date, delivery_date, day) as: 'product_order_lead_time'

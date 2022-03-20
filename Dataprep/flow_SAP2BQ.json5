@@ -3,12 +3,12 @@
   kind: 'artifact',
   metadata: {
     trifactaVersion: '9.0.0+59.20220214003650.64c7855',
-    exportedAt: '2022-03-11T01:14:27.369Z',
+    exportedAt: '2022-03-20T03:42:46.772Z',
     exportedBy: 79454,
-    uuid: '98822990-a0d8-11ec-8699-c3cb48fb6efa',
+    uuid: 'ceaf0b40-a7ff-11ec-bbdb-2f7a11b1df36',
     comment: '',
     primaryFlowIds: [
-      1016330,
+      1036572,
     ],
     edition: 'Dataprep',
     lastMigration: '20220120144728',
@@ -18,8 +18,26 @@
     connections: [],
     flows: [
       {
-        settings: null,
-        id: 1016330,
+        settings: {
+          optimize: 'default',
+          optimizers: {
+            columnPruning: 'default',
+            filterPushdown: 'default',
+            columnPruningOnSource: 'default',
+            filterPushdownOnSource: 'default',
+            joinPushdown: 'default',
+            expressionPushdown: 'default',
+            aggPushdown: 'default',
+            unionPushdown: 'default',
+            profilePushdown: 'default',
+            samplePushdown: 'default',
+            advancedPushdown: 'default',
+            filesToBigQuery: 'default',
+            fullPushdown: 'default',
+          },
+          dbOverrides: {},
+        },
+        id: 1036572,
         name: 'SAP2BQ',
         description: '',
         defaultOutputDir: null,
@@ -28,32 +46,32 @@
         fromTemplateId: null,
         flownodes: [
           {
-            id: 5444068,
-            scriptId: 4918623,
+            id: 5571248,
+            scriptId: 5025399,
             flowNodeId: null,
             wrangled: true,
             referenceId: null,
             sampleLoadLimit: null,
           },
           {
-            id: 5444069,
-            scriptId: 4918624,
+            id: 5571249,
+            scriptId: 5025400,
             flowNodeId: null,
             wrangled: true,
             referenceId: null,
             sampleLoadLimit: null,
           },
           {
-            id: 5444070,
-            scriptId: 4918625,
+            id: 5571250,
+            scriptId: 5025401,
             flowNodeId: null,
             wrangled: true,
             referenceId: null,
             sampleLoadLimit: null,
           },
           {
-            id: 5553574,
-            scriptId: 5010361,
+            id: 5571252,
+            scriptId: 5023417,
             flowNodeId: null,
             wrangled: false,
             referenceId: null,
@@ -63,71 +81,71 @@
         notes: [],
         flowgraphvertices: [
           {
-            id: 6725642,
+            id: 6953020,
             objectType: 'flownode',
-            objectId: 5444068,
-            x: -260,
-            y: 132,
+            objectId: 5571248,
+            x: -258,
+            y: 102,
             width: null,
             height: null,
           },
           {
-            id: 6725643,
+            id: 6953021,
             objectType: 'flownode',
-            objectId: 5444069,
-            x: -40,
-            y: 159,
+            objectId: 5571249,
+            x: -7,
+            y: 133,
             width: null,
             height: null,
           },
           {
-            id: 6725644,
+            id: 6953022,
             objectType: 'flownode',
-            objectId: 5444070,
-            x: 4,
-            y: -40,
+            objectId: 5571250,
+            x: 42,
+            y: -47,
             width: null,
             height: null,
           },
           {
-            id: 6920374,
+            id: 6953025,
             objectType: 'flownode',
-            objectId: 5553574,
-            x: -376,
-            y: -93,
+            objectId: 5571252,
+            x: -292,
+            y: -108,
             width: null,
             height: null,
           },
           {
-            id: 6725646,
+            id: 6953024,
             objectType: 'outputobject',
-            objectId: 804999,
-            x: 189,
-            y: 183,
+            objectId: 825521,
+            x: 226,
+            y: 157,
             width: null,
             height: null,
           },
         ],
         flowedges: [
           {
-            id: 4483210,
-            inFlowNodeId: 5444068,
+            id: 4590464,
+            inFlowNodeId: 5571248,
             inPortId: null,
-            outFlowNodeId: 5444069,
+            outFlowNodeId: 5571249,
             outPortId: null,
           },
           {
-            id: 4483211,
-            inFlowNodeId: 5444070,
+            id: 4590465,
+            inFlowNodeId: 5571250,
             inPortId: null,
-            outFlowNodeId: 5444068,
+            outFlowNodeId: 5571248,
             outPortId: null,
           },
           {
-            id: 4576101,
-            inFlowNodeId: 5553574,
+            id: 4590467,
+            inFlowNodeId: 5571252,
             inPortId: null,
-            outFlowNodeId: 5444070,
+            outFlowNodeId: 5571250,
             outPortId: null,
           },
         ],
@@ -136,7 +154,7 @@
         runparameters: [],
         recipes: [
           {
-            id: 4918623,
+            id: 5025399,
             name: 'main transform',
             description: null,
             active: true,
@@ -274,7 +292,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407193,
+                id: 31130789,
                 hash: 'cb649ee99fe4b15cb27f66d7451cd2bad6ede315',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -434,7 +452,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30559629,
+                id: 31130790,
                 hash: 'e59341ef6830a2106a1a3e3a98732af8a040d5d6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -488,7 +506,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30559626,
+                id: 31130791,
                 hash: '6d60600a8a965b63c397ffeaf793cd20fcb40d3e',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -549,7 +567,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407196,
+                id: 31130792,
                 hash: '64308b9adfd4a0f4112c86437e32b4f37b0ee1b5',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -658,7 +676,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407197,
+                id: 31130793,
                 hash: '3082e8af40ba4c3fe37fea0d7b759ec94964ddbc',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -1008,7 +1026,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30487302,
+                id: 31130794,
                 hash: 'a8d5a4296ac8b019b7141cdfe3cab0b28cacfa16',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -1118,7 +1136,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407199,
+                id: 31130795,
                 hash: '529466e72f09bf6bd3183fdb36d269f510704801',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -1133,19 +1151,14 @@
                       ecount_date: {
                         type: [
                           'Datetime',
-                          'yy-mm-dd',
-                          'yyyy*mm*dd',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyymmdd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
                           [
                             'Datetime',
-                            'yy-mm-dd',
-                            'yyyy*mm*dd',
-                          ],
-                          [
-                            'Datetime',
-                            'yy-dd-mm',
-                            'yyyy*dd*mm',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyymmdd*HH:MM:SS.sssX',
                           ],
                           [
                             'String',
@@ -1155,6 +1168,9 @@
                           ],
                           [
                             'Phone',
+                          ],
+                          [
+                            'SSN',
                           ],
                         ],
                       },
@@ -1166,7 +1182,7 @@
                     with: {
                       kind: 'constant',
                       type: 'String',
-                      value: '/',
+                      value: '',
                     },
                     col: {
                       kind: 'array',
@@ -1183,7 +1199,7 @@
                     on: {
                       kind: 'constant',
                       type: 'Regexp',
-                      value: '\\.',
+                      value: '[\\.\\-]',
                     },
                     ignoreCase: {
                       kind: 'constant',
@@ -1211,44 +1227,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30408275,
-                hash: '4afa8698f7f034a6169c12b86de83a3b7a3bac75',
-                pbemappingartifacts: [],
-                targetmappingartifacts: [],
-                udfscriptlines: [],
-                dependencies: [],
-              },
-              {
-                columnMetadata: {},
-                task: {
-                  annotations: {},
-                  kind: 'task',
-                  type: 'DateFormat',
-                  parameters: {
-                    col: {
-                      kind: 'array',
-                      type: 'Array',
-                      value: [
-                        {
-                          kind: 'column',
-                          type: 'Column',
-                          value: 'ecount_date',
-                          relation: null,
-                        },
-                      ],
-                    },
-                    type: {
-                      kind: 'bundle',
-                      type: 'Bundle',
-                      value: 'yymmddcommondateslash',
-                    },
-                  },
-                  outputName: null,
-                },
-                tableData: null,
-                portId: null,
-                id: 30407200,
-                hash: 'c9b9e9032617779250a55fe2511bdf112f532f85',
+                id: 31136052,
+                hash: '0c18106106d89331571fd92bd22b113f6cbda127',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -1332,7 +1312,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407201,
+                id: 31130798,
                 hash: 'f6bb40efec0119f613dc87a450f22801051a0da6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -1985,7 +1965,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407202,
+                id: 31130799,
                 hash: 'ce818f6ef07599a2af8b64895e3a38d8e545e941',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2343,7 +2323,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407203,
+                id: 31130800,
                 hash: '266171be4605ae49d45919b56384363bd59895ac',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2523,7 +2503,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407204,
+                id: 31130801,
                 hash: 'c6297ad31f6c7aea06115f148de116369a19d52b',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2603,7 +2583,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407205,
+                id: 31130802,
                 hash: '5e18e1dd1bdae9d4f3ae21e586274bcce9854ba0',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2652,7 +2632,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407206,
+                id: 31130803,
                 hash: '5506d85e21adbeaa768f486a626aa2b18d507ee9',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2732,7 +2712,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407207,
+                id: 31130804,
                 hash: 'a1ddd2a65745e1007a52e32b72201d973c00f899',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2779,7 +2759,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407208,
+                id: 31130805,
                 hash: 'da992a4f389e07952c22ed787f26c903b5562307',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2859,7 +2839,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407209,
+                id: 31130806,
                 hash: '9f4b09ce6c4eaf4e97bc287400102d971180d53b',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2906,7 +2886,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407210,
+                id: 31130807,
                 hash: '54bdfbd885d72c4337854ee5e4ba0e5b13a7e1bc',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -2986,7 +2966,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407211,
+                id: 31130808,
                 hash: '735eb32bf8fac6eeb2ca4d36220e5d70c161deef',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -3033,7 +3013,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407212,
+                id: 31130809,
                 hash: '658658e6659af4ad6da59de54c947350d808f3e1',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -3170,7 +3150,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407213,
+                id: 31130810,
                 hash: '89f023a8ad43748a6f358378cd9c3de6b81f61e6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -3250,7 +3230,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407214,
+                id: 31130811,
                 hash: 'ae8870456b7ef54f941613d96f2829e1b7b358b6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -3297,7 +3277,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407215,
+                id: 31130812,
                 hash: '5fd82ff8809007141a4de9ec18b379a45825145b',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -3662,7 +3642,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407216,
+                id: 31130813,
                 hash: '26185d5b12cdd1935c46e2da2ad6227a3f5b7a70',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -3875,7 +3855,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407217,
+                id: 31130814,
                 hash: 'd65835e7785a6f1520d4360af543b9af7c8b8d61',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -4350,7 +4330,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407218,
+                id: 31130815,
                 hash: '8bf978971722d2daeff514a4480158235a1a8ed2',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5104,7 +5084,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407219,
+                id: 31130816,
                 hash: 'e941df29064013404f7cf88b919d2af638b3dbd4',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5151,7 +5131,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407220,
+                id: 31130817,
                 hash: '72beaef23a639bb07635f8358400be2721f523c3',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5231,7 +5211,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407221,
+                id: 31130818,
                 hash: 'e8a40723af782d72a9637db55d6b2c789e852d5b',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5377,7 +5357,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30711744,
+                id: 31130819,
                 hash: '0f692cdd45e8ddbaf5dc802782e8e274824f4540',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5470,7 +5450,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30409208,
+                id: 31130820,
                 hash: '71a6c52d788dfdb0642b210d51a2c16e7cf898f6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5540,7 +5520,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30409211,
+                id: 31130821,
                 hash: '61fcb512bcdea745fe7e3dedfd9d6ccdc4f4f8cf',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5587,7 +5567,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30409209,
+                id: 31130822,
                 hash: '71b7e83f4ebf8baff7c6b62711f94d9a29cce075',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5602,20 +5582,20 @@
                       delivery_date: {
                         type: [
                           'Datetime',
-                          'yy-mm-dd',
-                          'yyyymmdd',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyymmdd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
                           [
                             'Datetime',
-                            'yy-mm-dd',
-                            'yyyymmdd',
-                          ],
-                          [
-                            'Integer',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyymmdd*HH:MM:SS.sssX',
                           ],
                           [
                             'String',
+                          ],
+                          [
+                            'Integer',
                           ],
                           [
                             'Phone',
@@ -5650,7 +5630,7 @@
                     on: {
                       kind: 'constant',
                       type: 'Regexp',
-                      value: '\\.',
+                      value: '[\\.\\-]',
                     },
                     ignoreCase: {
                       kind: 'constant',
@@ -5678,8 +5658,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30411181,
-                hash: 'a6ffe559fa5306abd035b471e5b8a965aaa0f089',
+                id: 31136759,
+                hash: 'a1456d56800e471646d5d7e85df64b1b2630093f',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -5693,20 +5673,20 @@
                       sap_deposit_date: {
                         type: [
                           'Datetime',
-                          'yy-mm-dd',
-                          'yyyymmdd',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyymmdd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
                           [
                             'Datetime',
-                            'yy-mm-dd',
-                            'yyyymmdd',
-                          ],
-                          [
-                            'Integer',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyymmdd*HH:MM:SS.sssX',
                           ],
                           [
                             'String',
+                          ],
+                          [
+                            'Integer',
                           ],
                           [
                             'Phone',
@@ -5741,7 +5721,7 @@
                     on: {
                       kind: 'constant',
                       type: 'Regexp',
-                      value: '\\.',
+                      value: '[\\.\\-]',
                     },
                     ignoreCase: {
                       kind: 'constant',
@@ -5769,8 +5749,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30622506,
-                hash: '96ab4387d59952a82d67e52f5ca6d0efe9c1e07a',
+                id: 31136786,
+                hash: 'ebf6758e7f0103549d2e14bd601c702b033b649a',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -5781,7 +5761,7 @@
                 task: {
                   annotations: {},
                   kind: 'task',
-                  type: 'SetType',
+                  type: 'DateFormat',
                   parameters: {
                     col: {
                       kind: 'array',
@@ -5802,6 +5782,12 @@
                         {
                           kind: 'column',
                           type: 'Column',
+                          value: 'ecount_date',
+                          relation: null,
+                        },
+                        {
+                          kind: 'column',
+                          type: 'Column',
                           value: 'sap_deposit_date',
                           relation: null,
                         },
@@ -5810,36 +5796,101 @@
                     type: {
                       kind: 'bundle',
                       type: 'Bundle',
-                      value: 'Datetime',
-                    },
-                    datetimeType: {
-                      kind: 'array',
-                      type: 'Array',
-                      value: [
-                        {
-                          kind: 'constant',
-                          type: 'String',
-                          value: 'Datetime',
-                        },
-                        {
-                          kind: 'constant',
-                          type: 'String',
-                          value: 'yy-mm-dd',
-                        },
-                        {
-                          kind: 'constant',
-                          type: 'String',
-                          value: 'yyyymmdd',
-                        },
-                      ],
+                      value: 'dashdate2',
                     },
                   },
                   outputName: null,
                 },
                 tableData: null,
                 portId: null,
-                id: 30622520,
-                hash: '507f89e40229a3c85d0e1a7fb9e46fe503ba6cac',
+                id: 31137039,
+                hash: '96e424b6df5ea2ddd46de7501e218ec84e961a3c',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {
+                    transformSpecificData: null,
+                    disabled: true,
+                    task: {
+                      annotations: {},
+                      kind: 'task',
+                      type: 'SetType',
+                      parameters: {
+                        col: {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'order_date',
+                              relation: null,
+                            },
+                            {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'delivery_date',
+                              relation: null,
+                            },
+                            {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'sap_deposit_date',
+                              relation: null,
+                            },
+                          ],
+                        },
+                        type: {
+                          kind: 'bundle',
+                          type: 'Bundle',
+                          value: 'Datetime',
+                        },
+                        datetimeType: {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: 'Datetime',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: 'yy-mm-dd',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: 'yyyymmdd',
+                            },
+                          ],
+                        },
+                      },
+                      outputName: null,
+                    },
+                    tableData: 'null',
+                  },
+                  kind: 'task',
+                  type: 'Comment',
+                  parameters: {
+                    comment: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: 'Change 3 columns type to Datetime, yy-mm-dd, yyyymmdd',
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 31137000,
+                hash: 'd089382e999e56de0508c8251f90acc959b8e23c',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -5936,7 +5987,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407225,
+                id: 31130826,
                 hash: '9a7dd2583b7476c856afacfe1db161ef34e26aec',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -5983,7 +6034,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407226,
+                id: 31130827,
                 hash: 'ba1c6aaa1eadf8587efc5234c0215c9b81e3fd37',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6065,7 +6116,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407227,
+                id: 31130828,
                 hash: 'f26b768055f0a7b180a3d9888ba9b9c77a8688d4',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6154,7 +6205,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407228,
+                id: 31130829,
                 hash: 'e721409d55dcc6839bdb533c88616c9f8fe224d1',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6244,7 +6295,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407229,
+                id: 31130830,
                 hash: '33d25fbbe61903500ea176277b48dfa7d38813d5',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6291,7 +6342,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407230,
+                id: 31130831,
                 hash: '0bc8dd7d3f1f39ecfe6e66a578c58a1f6137f0c2',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6401,7 +6452,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407231,
+                id: 31130832,
                 hash: 'eac097664a14f65de37b89f2a4f60dd98a395af2',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6584,7 +6635,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407232,
+                id: 31130833,
                 hash: '6f0da67a3952f5325908f643b272026f7a65edbe',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6595,7 +6646,7 @@
             dqScriptRules: [],
           },
           {
-            id: 4918624,
+            id: 5025400,
             name: 'insertId',
             description: null,
             active: true,
@@ -6802,7 +6853,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407233,
+                id: 31130834,
                 hash: 'cb6e8bd627cb7df3f5654f7fdea039a0c7d0b0e5',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6890,7 +6941,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407234,
+                id: 31130835,
                 hash: 'd4b7465974706110503d6e558db84942120c3415',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -6899,23 +6950,26 @@
               },
               {
                 columnMetadata: {
-                  insertId: {
-                    id: '92jt27j',
+                  order_id1: {
+                    id: '48w4pqi',
                   },
                 },
                 task: {
                   annotations: {
                     outputColumnAnnotations: {
-                      insertId: {
+                      order_id1: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
@@ -6923,15 +6977,63 @@
                           [
                             'SSN',
                           ],
-                          [
-                            'Map',
-                          ],
                         ],
                       },
                     },
                   },
                   kind: 'task',
-                  type: 'Merge',
+                  type: 'ExtractPatterns',
+                  parameters: {
+                    col: {
+                      kind: 'column',
+                      type: 'Column',
+                      value: 'order_id',
+                      relation: null,
+                    },
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'custom',
+                    },
+                    on: {
+                      kind: 'constant',
+                      type: 'Regexp',
+                      value: '.*',
+                    },
+                    ignoreCase: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: false,
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'order_id1',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 31233555,
+                hash: '82ab749e611c740ea53fba8a87ae9ab759b18dc7',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {},
+                  kind: 'task',
+                  type: 'SetType',
                   parameters: {
                     col: {
                       kind: 'array',
@@ -6940,34 +7042,159 @@
                         {
                           kind: 'column',
                           type: 'Column',
-                          value: 'order_id',
-                          relation: null,
-                        },
-                        {
-                          kind: 'column',
-                          type: 'Column',
-                          value: 'order_seq',
+                          value: 'order_id1',
                           relation: null,
                         },
                       ],
                     },
-                    with: {
-                      kind: 'constant',
-                      type: 'String',
-                      value: '_',
-                    },
-                    as: {
-                      kind: 'constant',
-                      type: 'String',
-                      value: 'insertId',
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'String',
                     },
                   },
                   outputName: null,
                 },
                 tableData: null,
                 portId: null,
-                id: 30407235,
-                hash: '606bbc342e7664f57fad54f4494b56ec3f82917d',
+                id: 31233544,
+                hash: 'befe53f491ec53d383cfb5a589acf4e7078a7d97',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {},
+                  kind: 'task',
+                  type: 'Rename',
+                  parameters: {
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'manual',
+                    },
+                    mapping: {
+                      kind: 'matrix',
+                      type: 'Matrix',
+                      value: [
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'order_id1',
+                              relation: null,
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: 'insertId',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 31233552,
+                hash: '9fc2b29a588deac2f1f3529a2439729b62460a12',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {
+                    transformSpecificData: null,
+                    disabled: true,
+                    task: {
+                      annotations: {
+                        outputColumnAnnotations: {
+                          insertId: {
+                            type: [
+                              'String',
+                            ],
+                            _likely_types: [
+                              [
+                                'String',
+                              ],
+                              [
+                                'Integer',
+                              ],
+                              [
+                                'Phone',
+                              ],
+                              [
+                                'SSN',
+                              ],
+                              [
+                                'Map',
+                              ],
+                            ],
+                          },
+                        },
+                      },
+                      kind: 'task',
+                      type: 'Merge',
+                      parameters: {
+                        col: {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'order_id',
+                              relation: null,
+                            },
+                            {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'order_seq',
+                              relation: null,
+                            },
+                          ],
+                        },
+                        with: {
+                          kind: 'constant',
+                          type: 'String',
+                          value: '_',
+                        },
+                        as: {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'insertId',
+                        },
+                      },
+                      outputName: null,
+                    },
+                    tableData: 'null',
+                  },
+                  kind: 'task',
+                  type: 'Comment',
+                  parameters: {
+                    comment: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: "Concatenate order_id, order_seq separated by '_'",
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 31233549,
+                hash: '09fa0616e99c18aba3cb0fe89fa73045c9b5c739',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -7021,7 +7248,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407236,
+                id: 31130837,
                 hash: '1a13646890dca5a262d04a412d9a7c1211afba3f',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -7032,7 +7259,7 @@
             dqScriptRules: [],
           },
           {
-            id: 4918625,
+            id: 5025401,
             name: 'column preproc',
             description: null,
             active: true,
@@ -7170,7 +7397,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407237,
+                id: 31130838,
                 hash: 'cb649ee99fe4b15cb27f66d7451cd2bad6ede315',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -7214,7 +7441,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407238,
+                id: 31130839,
                 hash: 'b918ef709b1dba48d13fc12ff20d9041e6aa7569',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -7987,7 +8214,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407240,
+                id: 31130840,
                 hash: '093105e4ac781377d03162a46b0efa1696622107',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -8751,7 +8978,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407241,
+                id: 31130841,
                 hash: '5016ac8ff49bf0c8590d07613cd8c9c71c777dc6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -8800,7 +9027,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407242,
+                id: 31130842,
                 hash: '76bb75732a33183b273e5015101201096d1025ce',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -8849,7 +9076,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407243,
+                id: 31130843,
                 hash: '2bf59367242c3d0fe0872339ab02cc8e90209d8d',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -8898,7 +9125,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407244,
+                id: 31130844,
                 hash: '25c33e6728fb606aab7251ec6d2178573abe72e2',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -8947,7 +9174,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407245,
+                id: 31130845,
                 hash: '1daf2562ff85d39bdff0ee1770a6d701a755ab1f',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9067,7 +9294,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407246,
+                id: 31130846,
                 hash: 'c2e50d34d0bb25597e7146ed457950d0743944aa',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9114,7 +9341,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407247,
+                id: 31130847,
                 hash: '3638bd0947c3ded9b4f8d57cef223544957c673a',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9150,7 +9377,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407248,
+                id: 31130848,
                 hash: 'a801c0b4e6c0abfabde75a66f045288228824802',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9164,6 +9391,11 @@
                   kind: 'task',
                   type: 'Drop',
                   parameters: {
+                    action: {
+                      kind: 'enumerable',
+                      type: 'Enumerable',
+                      value: 'Drop',
+                    },
                     col: {
                       kind: 'array',
                       type: 'Array',
@@ -9176,17 +9408,12 @@
                         },
                       ],
                     },
-                    action: {
-                      kind: 'enumerable',
-                      type: 'Enumerable',
-                      value: 'Drop',
-                    },
                   },
                   outputName: null,
                 },
                 tableData: null,
                 portId: null,
-                id: 30407249,
+                id: 31130849,
                 hash: '97374b1908a8a09f258116493f03b32543611dd2',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9235,7 +9462,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407250,
+                id: 31130850,
                 hash: '9e63d291d9cf7b3f925f74252ce3d34a88adf346',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9271,7 +9498,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407251,
+                id: 31130851,
                 hash: '0de90dcd537c6f8ea80a9713620aa304ac7fe48a',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9320,7 +9547,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407252,
+                id: 31130852,
                 hash: '65dcf4031a902eef440af60bff97ee5d874658c8',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9369,7 +9596,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407253,
+                id: 31130853,
                 hash: '6e383e88dc6616d3d49a795d3cd0917a8ea34222',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9405,7 +9632,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407254,
+                id: 31130854,
                 hash: '14ecbd47046a1e2b00cac7d1b00a89d63fd0f4f8',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9454,7 +9681,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407255,
+                id: 31130855,
                 hash: '36fa3e902cf50f9dc0dfa682178941446d1a6aee',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9536,7 +9763,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30420198,
+                id: 31130856,
                 hash: '449beebc1e51bd2bb0c973af31c2a8f1b36924ac',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9574,7 +9801,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407256,
+                id: 31130857,
                 hash: '1869a13f033de61597a9bd97a64946d4b85bda18',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9623,7 +9850,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407257,
+                id: 31130858,
                 hash: 'c4776dff300b5f80835ebeeef430c8bfaff43c60',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9659,7 +9886,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407258,
+                id: 31130859,
                 hash: '5a9e2875b3f88799023f8ef7b040f59d261ea4eb',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9708,7 +9935,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407259,
+                id: 31130860,
                 hash: '13bd6a22b598ba78d39ffc907713a0d40a4d2877',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9744,7 +9971,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30541620,
+                id: 31130861,
                 hash: '4423b8d9a443086fdffb19b889a7abbec9e75512',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9793,7 +10020,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407261,
+                id: 31130862,
                 hash: '76f55a43af1dbd53337987ae624062557df5841c',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9829,7 +10056,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407262,
+                id: 31130863,
                 hash: '9ceb21741c8b50355301070792e4f6e2a87f2d40',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9878,7 +10105,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407263,
+                id: 31130864,
                 hash: '0fd2f808ba758f52e8eda67a56c8c525938c27a3',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -9927,7 +10154,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407264,
+                id: 31130865,
                 hash: 'e40b31ffbb92e45accd5d87989657660b9af014b',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10014,7 +10241,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30460052,
+                id: 31130866,
                 hash: '924f81cc53d21cce01bed7e00a8fdf319b5a2fce',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10063,7 +10290,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407266,
+                id: 31130867,
                 hash: '829963f828f9ec2e36157dfc5d479257c72f729a',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10112,7 +10339,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407267,
+                id: 31130868,
                 hash: '4455f51fde3a7177efc4d36df2d901f0080d4347',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10161,7 +10388,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407268,
+                id: 31130869,
                 hash: 'af8893d5bfde482a15a090f3e544479452a8f4ac',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10210,7 +10437,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407269,
+                id: 31130870,
                 hash: 'bb3e88bb1e344a9bdfd9e0f5b222bec2669c9ea9',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10248,7 +10475,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407270,
+                id: 31130871,
                 hash: 'cb6ce8c06a017d843ef5e21ddf4ed9730df72c85',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10297,7 +10524,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407271,
+                id: 31130872,
                 hash: 'f81985d799522a82e71e9910a62d737e9357472c',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10346,7 +10573,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407272,
+                id: 31130873,
                 hash: 'df3e9e75d87d709b66657dd08e73f34822542e06',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10395,7 +10622,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407273,
+                id: 31130874,
                 hash: 'ce30a69e0dda20097f88ca30127541f27bd6f92b',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10444,7 +10671,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407274,
+                id: 31130875,
                 hash: '2b398c266dbf6a0cfa3ed75b0709f10ecded8271',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10480,7 +10707,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407275,
+                id: 31130876,
                 hash: '18c9ae2c1fb353e13463adcef41501e592e5d1fd',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10595,7 +10822,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407276,
+                id: 31130877,
                 hash: 'c81f4c79c314bf2e07c3e235e0455a16f9fd4fe9',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10642,7 +10869,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30542020,
+                id: 31130878,
                 hash: 'ad734546f7890dbd11f62115935d58036b48adb3',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10689,7 +10916,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30542023,
+                id: 31130879,
                 hash: '306c64b912cb796e425b73413cf7a9ad5131dd5e',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10725,7 +10952,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30552307,
+                id: 31130880,
                 hash: '78e704245065504511b9f51808867a17454659a6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10772,7 +10999,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30542099,
+                id: 31130881,
                 hash: 'b19234a6b4c7ffdc129f6edfbc0511b26bc49edc',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10809,7 +11036,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407277,
+                id: 31130882,
                 hash: 'bbbda1788e3e67fdbb1d1681451bf01ec3305b10',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10862,7 +11089,7 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 30407278,
+                id: 31130883,
                 hash: '604b3099449a623dc9fe20090186be752c7f41d7',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
@@ -10873,8 +11100,8 @@
             dqScriptRules: [],
           },
           {
-            id: 5010361,
-            name: 'sap_ds_20220201_20220310.csv',
+            id: 5023417,
+            name: 'sap2bq.csv',
             description: null,
             active: true,
             nextPortId: 1,
@@ -10897,7 +11124,7 @@
                     location: {
                       kind: 'constant',
                       type: 'String',
-                      value: 'id://1887964',
+                      value: 'id://1892507',
                     },
                     enableLineage: {
                       kind: 'constant',
@@ -10916,12 +11143,12 @@
                       ],
                     },
                   },
-                  outputName: 'original_datasource_1887964',
+                  outputName: 'original_datasource_1892507',
                 },
                 tableData: null,
                 portId: null,
-                id: 31033135,
-                hash: 'c412a25f329d9cc2cb548dab2b6541ace1b706c6',
+                id: 31117774,
+                hash: '7a7570d065e4925c3b5d5edb8a6bd56b30597f79',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -10962,7 +11189,7 @@
                     on: {
                       kind: 'constant',
                       type: 'String',
-                      value: '\r\n',
+                      value: '\n',
                     },
                     col: {
                       kind: 'column',
@@ -10985,8 +11212,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 31033131,
-                hash: '3e9821a4b98bbaeb713a7a558e0dfd16e5285594',
+                id: 31117775,
+                hash: '5e0dbcfc803cc40c01c0298ba18470aabb16ab81',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -10999,45 +11226,45 @@
                     outputColumnAnnotations: {
                       column2: {
                         type: [
-                          'Emailaddress',
+                          'String',
                         ],
                         _likely_types: [
-                          [
-                            'Emailaddress',
-                          ],
-                          [
-                            'Url',
-                          ],
                           [
                             'String',
                           ],
                           [
                             'Integer',
-                          ],
-                          [
-                            'Phone',
-                          ],
-                        ],
-                      },
-                      column3: {
-                        type: [
-                          'Integer',
-                        ],
-                        _likely_types: [
-                          [
-                            'Integer',
-                          ],
-                          [
-                            'Float',
-                          ],
-                          [
-                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column3: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -11109,28 +11336,6 @@
                       },
                       column7: {
                         type: [
-                          'String',
-                        ],
-                        _likely_types: [
-                          [
-                            'String',
-                          ],
-                          [
-                            'Integer',
-                          ],
-                          [
-                            'Phone',
-                          ],
-                          [
-                            'SSN',
-                          ],
-                          [
-                            'Map',
-                          ],
-                        ],
-                      },
-                      column8: {
-                        type: [
                           'Integer',
                         ],
                         _likely_types: [
@@ -11148,6 +11353,28 @@
                           ],
                           [
                             'SSN',
+                          ],
+                        ],
+                      },
+                      column8: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -11241,12 +11468,9 @@
                       },
                       column13: {
                         type: [
-                          'State',
+                          'String',
                         ],
                         _likely_types: [
-                          [
-                            'State',
-                          ],
                           [
                             'String',
                           ],
@@ -11258,6 +11482,9 @@
                           ],
                           [
                             'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -11329,23 +11556,23 @@
                       },
                       column17: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -11373,23 +11600,23 @@
                       },
                       column19: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -11433,29 +11660,29 @@
                             'SSN',
                           ],
                           [
-                            'Float',
+                            'Map',
                           ],
                         ],
                       },
                       column22: {
                         type: [
-                          'Integer',
+                          'String',
                         ],
                         _likely_types: [
                           [
-                            'Integer',
-                          ],
-                          [
-                            'Float',
-                          ],
-                          [
                             'String',
+                          ],
+                          [
+                            'Integer',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -11593,12 +11820,9 @@
                       },
                       column29: {
                         type: [
-                          'Bool',
+                          'String',
                         ],
                         _likely_types: [
-                          [
-                            'Bool',
-                          ],
                           [
                             'String',
                           ],
@@ -11610,6 +11834,9 @@
                           ],
                           [
                             'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -11822,8 +12049,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 31033132,
-                hash: '3f0acf6a955239c280115421ce5d70ea15d024d8',
+                id: 31117776,
+                hash: '8973915e3fcdeb9431539eeb95ea3671e3937efb',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -11858,23 +12085,23 @@
                       },
                       column3: {
                         type: [
-                          'Integer',
+                          'String',
                         ],
                         _likely_types: [
                           [
-                            'Integer',
-                          ],
-                          [
-                            'Float',
-                          ],
-                          [
                             'String',
+                          ],
+                          [
+                            'Integer',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -11946,23 +12173,23 @@
                       },
                       column7: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12012,31 +12239,44 @@
                       },
                       column10: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
                           [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
+                          [
                             'String',
+                          ],
+                          [
+                            'Datetime',
+                            'yy-dd-mm hh:mm:ss',
+                            'yyyy*dd*mm*HH:MM:SS.sssX',
                           ],
                           [
                             'Integer',
                           ],
                           [
                             'Phone',
-                          ],
-                          [
-                            'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
                       column11: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
+                          [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
                           [
                             'String',
                           ],
@@ -12048,9 +12288,6 @@
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12166,23 +12403,23 @@
                       },
                       column17: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12210,31 +12447,38 @@
                       },
                       column19: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
                       column20: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
+                          [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
                           [
                             'String',
                           ],
@@ -12246,9 +12490,6 @@
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12452,9 +12693,16 @@
                       },
                       column30: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
+                          [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
                           [
                             'String',
                           ],
@@ -12466,9 +12714,6 @@
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12609,8 +12854,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 31033133,
-                hash: 'b9e3a398ec36721877b73b9bb468b3f2b3586cbc',
+                id: 31117777,
+                hash: '5eee209db795d4e9334afe965b63f48b54cee0c6',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -12645,23 +12890,23 @@
                       },
                       column3: {
                         type: [
-                          'Integer',
+                          'String',
                         ],
                         _likely_types: [
                           [
-                            'Integer',
-                          ],
-                          [
-                            'Float',
-                          ],
-                          [
                             'String',
+                          ],
+                          [
+                            'Integer',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
+                          ],
+                          [
+                            'Map',
                           ],
                         ],
                       },
@@ -12733,23 +12978,23 @@
                       },
                       column7: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12799,31 +13044,44 @@
                       },
                       column10: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
                           [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
+                          [
                             'String',
+                          ],
+                          [
+                            'Datetime',
+                            'yy-dd-mm hh:mm:ss',
+                            'yyyy*dd*mm*HH:MM:SS.sssX',
                           ],
                           [
                             'Integer',
                           ],
                           [
                             'Phone',
-                          ],
-                          [
-                            'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
                       column11: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
+                          [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
                           [
                             'String',
                           ],
@@ -12835,9 +13093,6 @@
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12953,23 +13208,23 @@
                       },
                       column17: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -12997,31 +13252,38 @@
                       },
                       column19: {
                         type: [
-                          'String',
+                          'Integer',
                         ],
                         _likely_types: [
                           [
-                            'String',
+                            'Integer',
                           ],
                           [
-                            'Integer',
+                            'Float',
+                          ],
+                          [
+                            'String',
                           ],
                           [
                             'Phone',
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
                       column20: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
+                          [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
                           [
                             'String',
                           ],
@@ -13033,9 +13295,6 @@
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -13239,9 +13498,16 @@
                       },
                       column30: {
                         type: [
-                          'String',
+                          'Datetime',
+                          'yy-mm-dd hh:mm:ss',
+                          'yyyy*mm*dd*HH:MM:SS.sssX',
                         ],
                         _likely_types: [
+                          [
+                            'Datetime',
+                            'yy-mm-dd hh:mm:ss',
+                            'yyyy*mm*dd*HH:MM:SS.sssX',
+                          ],
                           [
                             'String',
                           ],
@@ -13253,9 +13519,6 @@
                           ],
                           [
                             'SSN',
-                          ],
-                          [
-                            'Map',
                           ],
                         ],
                       },
@@ -13305,8 +13568,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 31033134,
-                hash: '1c7fefbb8e954ba48654860830bd6bd9cdfec86f',
+                id: 31117778,
+                hash: '7496b6b2cbe1f6af3cd7c945a1a16a19ccf8ea42',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -13318,21 +13581,22 @@
         ],
         outputobjects: [
           {
-            id: 804999,
+            id: 826050,
             execution: 'dataflow',
             profiler: true,
-            flowNodeId: 5444069,
-            isAdhoc: true,
-            ignoreRecipeErrors: true,
+            flowNodeId: 5571249,
+            isAdhoc: false,
+            ignoreRecipeErrors: false,
             name: null,
             description: null,
             publications: [
               {
                 path: [
-                  'eng-particle-234609',
-                  'ecount',
+                  'czechrepublic-290206',
+                  'SAP',
                 ],
                 parameters: {
+                  arrayStrictTypeMatch: 'false',
                   colsToUpdate: '[]',
                   deleteUnmatchedRowsInTarget: 'false',
                   externalTableLocation: null,
@@ -13341,9 +13605,9 @@
                   isExternalTable: 'false',
                   matchedRowsAction: 'update',
                   mergeJoinKeys: '[]',
-                  strictTypeMatch: '0',
+                  strictTypeMatch: 'false',
                 },
-                id: 776531,
+                id: 789645,
                 tableName: 'dup_order_detail',
                 targetType: 'bigquery',
                 action: 'createAndLoad',
@@ -13352,60 +13616,185 @@
               },
             ],
             writesettings: [],
-            sqlscripts: [],
+            sqlscripts: [
+              {
+                sqlScript: 'DROP TABLE IF EXISTS\n  SAP.order_de_ident;\n  \nCREATE TABLE\n  SAP.order_de_ident AS\nSELECT\n  * EXCEPT (email,\n    cellphone_number,\n    cust_name,\n    addr1)\nFROM (\n  SELECT\n    *,    \n    DENSE_RANK() OVER (PARTITION BY insertId ORDER BY processing_dt DESC) row_number\n  FROM\n    `czechrepublic-290206.SAP.dup_order_detail` )\nWHERE\n  row_number = 1\n\n',
+                id: 10558,
+                connectionId: null,
+                type: 'post',
+                vendor: 'bigquery',
+                runParameters: [],
+              },
+            ],
             outputobjectdataflowoptions: [
               {
-                id: 12445556,
+                id: 12577372,
                 key: 'autoscalingAlgorithm',
                 value: 'THROUGHPUT_BASED',
               },
               {
-                id: 12445561,
+                id: 12577378,
                 key: 'hostProjectId',
                 value: '',
               },
               {
-                id: 12445554,
+                id: 12577377,
+                key: 'label.',
+                value: '',
+              },
+              {
+                id: 12577370,
                 key: 'machineType',
                 value: 'n1-standard-1',
               },
               {
-                id: 12445559,
+                id: 12577375,
                 key: 'maxNumWorkers',
                 value: '1000',
               },
               {
-                id: 12445555,
+                id: 12577371,
                 key: 'network',
                 value: '',
               },
               {
-                id: 12445558,
+                id: 12577374,
                 key: 'numWorkers',
                 value: '1',
               },
               {
-                id: 12445552,
+                id: 12577368,
                 key: 'region',
                 value: 'asia-east1',
               },
               {
-                id: 12445557,
+                id: 12577373,
                 key: 'serviceAccount',
                 value: '',
               },
               {
-                id: 12445551,
+                id: 12577367,
                 key: 'subnetwork',
                 value: '',
               },
               {
-                id: 12445560,
+                id: 12577376,
                 key: 'usePublicIps',
                 value: 'true',
               },
               {
-                id: 12445553,
+                id: 12577369,
+                key: 'zone',
+                value: '',
+              },
+            ],
+            outputobjectsparkoptions: [],
+            outputobjectschemadriftoptions: [],
+          },
+          {
+            id: 825521,
+            execution: 'dataflow',
+            profiler: true,
+            flowNodeId: 5571249,
+            isAdhoc: true,
+            ignoreRecipeErrors: true,
+            name: null,
+            description: null,
+            publications: [
+              {
+                path: [
+                  'czechrepublic-290206',
+                  'SAP',
+                ],
+                parameters: {
+                  arrayStrictTypeMatch: 'false',
+                  colsToUpdate: '[]',
+                  deleteUnmatchedRowsInTarget: 'false',
+                  externalTableLocation: null,
+                  insertChecked: 'false',
+                  isDeltaTable: 'false',
+                  isExternalTable: 'false',
+                  matchedRowsAction: 'update',
+                  mergeJoinKeys: '[]',
+                  strictTypeMatch: 'false',
+                },
+                id: 784168,
+                tableName: 'dup_order_detail',
+                targetType: 'bigquery',
+                action: 'createAndLoad',
+                connectionId: null,
+                runParameters: [],
+              },
+            ],
+            writesettings: [],
+            sqlscripts: [
+              {
+                sqlScript: 'DROP TABLE IF EXISTS\n  SAP.order_de_ident;\n  \nCREATE TABLE\n  SAP.order_de_ident AS\nSELECT\n  * EXCEPT (email,\n    cellphone_number,\n    cust_name,\n    addr1)\nFROM (\n  SELECT\n    *,\n    ROW_NUMBER() OVER (PARTITION BY insertId ORDER BY processing_dt DESC) row_number\n  FROM\n    `czechrepublic-290206.SAP.dup_order_detail` )\nWHERE\n  row_number = 1\n\n  \n  ',
+                id: 10113,
+                connectionId: null,
+                type: 'post',
+                vendor: 'bigquery',
+                runParameters: [],
+              },
+            ],
+            outputobjectdataflowoptions: [
+              {
+                id: 12523557,
+                key: 'autoscalingAlgorithm',
+                value: 'THROUGHPUT_BASED',
+              },
+              {
+                id: 12523563,
+                key: 'hostProjectId',
+                value: '',
+              },
+              {
+                id: 12523562,
+                key: 'label.',
+                value: '',
+              },
+              {
+                id: 12523555,
+                key: 'machineType',
+                value: 'n1-standard-1',
+              },
+              {
+                id: 12523560,
+                key: 'maxNumWorkers',
+                value: '1000',
+              },
+              {
+                id: 12523556,
+                key: 'network',
+                value: '',
+              },
+              {
+                id: 12523559,
+                key: 'numWorkers',
+                value: '1',
+              },
+              {
+                id: 12523553,
+                key: 'region',
+                value: 'asia-east1',
+              },
+              {
+                id: 12523558,
+                key: 'serviceAccount',
+                value: '',
+              },
+              {
+                id: 12523552,
+                key: 'subnetwork',
+                value: '',
+              },
+              {
+                id: 12523561,
+                key: 'usePublicIps',
+                value: 'true',
+              },
+              {
+                id: 12523554,
                 key: 'zone',
                 value: '',
               },
@@ -13416,8 +13805,8 @@
         ],
         datasources: [
           {
-            path: '/upload/56af6267-767d-4547-849d-c8dabb635a9fsap_ds_20220201_20220310.csv',
-            bucket: 'tmp-dataprep-jobrun',
+            path: '/sap2bq.csv',
+            bucket: 'sap_export',
             userinfo: null,
             type: 'gs',
             host: null,
@@ -13425,7 +13814,7 @@
             hasDynamicUserInfo: false,
             hasDynamicHost: false,
             isDynamicOrConverted: false,
-            id: 1887964,
+            id: 1892507,
             dynamicPath: null,
             dynamicBucket: null,
             dynamicHost: null,
@@ -13437,17 +13826,17 @@
             disableTypeInference: false,
             hasStructuring: true,
             hasSchemaErrors: false,
-            parsingScriptId: 5010361,
+            parsingScriptId: 5023417,
             storageLocation: {
-              fullUri: 'gs://tmp-dataprep-jobrun/upload/56af6267-767d-4547-849d-c8dabb635a9fsap_ds_20220201_20220310.csv',
-              id: 22074001,
-              path: '/upload/56af6267-767d-4547-849d-c8dabb635a9fsap_ds_20220201_20220310.csv',
-              size: 3089902,
+              fullUri: 'gs://sap_export/sap2bq.csv',
+              id: 22179172,
+              path: '/sap2bq.csv',
+              size: 3704008,
               type: 'gs',
-              bucket: 'tmp-dataprep-jobrun',
+              bucket: 'sap_export',
               blobHost: null,
               container: null,
-              hash: '0d3c1b543a599da5a424fe4c3a2369afd1fc0772',
+              hash: '505cc69a4fcc228ef6b3177df9da317d8c4f0e28',
               host: null,
               userinfo: null,
             },
@@ -13459,5 +13848,5 @@
     ],
     udfscriptartifacts: [],
   },
-  hash: 'C6fOkfAwGlpTOSUG2eOZlynk/cSiEZmf',
+  hash: 'MgwbdLunH9yVjqB8NeC/qJx/zuYKSmAk',
 }

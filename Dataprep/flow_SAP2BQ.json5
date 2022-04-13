@@ -2,16 +2,16 @@
   type: 'flow',
   kind: 'artifact',
   metadata: {
-    trifactaVersion: '9.0.0+59.20220214003650.64c7855',
-    exportedAt: '2022-03-20T03:42:46.772Z',
+    trifactaVersion: '9.1.0+69.20220318074811.82e00c8',
+    exportedAt: '2022-04-13T10:29:24.174Z',
     exportedBy: 79454,
-    uuid: 'ceaf0b40-a7ff-11ec-bbdb-2f7a11b1df36',
+    uuid: '96954df0-bb14-11ec-99f5-37fc00e2166b',
     comment: '',
     primaryFlowIds: [
       1036572,
     ],
     edition: 'Dataprep',
-    lastMigration: '20220120144728',
+    lastMigration: '20220311155251',
   },
   data: {
     artifacts: [],
@@ -102,8 +102,8 @@
             id: 6953022,
             objectType: 'flownode',
             objectId: 5571250,
-            x: 42,
-            y: -47,
+            x: 25,
+            y: -72,
             width: null,
             height: null,
           },
@@ -121,7 +121,7 @@
             objectType: 'outputobject',
             objectId: 825521,
             x: 226,
-            y: 157,
+            y: 159,
             width: null,
             height: null,
           },
@@ -1036,7 +1036,7 @@
               {
                 columnMetadata: {
                   channel_oo: {
-                    id: '21kk7bg',
+                    id: '-b8lswyw',
                   },
                 },
                 task: {
@@ -1045,23 +1045,6 @@
                       channel_oo: {
                         type: [
                           'String',
-                        ],
-                        _likely_types: [
-                          [
-                            'String',
-                          ],
-                          [
-                            'Integer',
-                          ],
-                          [
-                            'Phone',
-                          ],
-                          [
-                            'SSN',
-                          ],
-                          [
-                            'Map',
-                          ],
                         ],
                       },
                     },
@@ -1108,7 +1091,7 @@
                                 rhs: {
                                   kind: 'constant',
                                   type: 'Regexp',
-                                  value: '網路',
+                                  value: '網路|momoshop',
                                 },
                               },
                             },
@@ -1136,8 +1119,8 @@
                 },
                 tableData: null,
                 portId: null,
-                id: 31130795,
-                hash: '529466e72f09bf6bd3183fdb36d269f510704801',
+                id: 31645251,
+                hash: '23999be3c6728c88709ebc4d66c0b00e3739e2e2',
                 pbemappingartifacts: [],
                 targetmappingartifacts: [],
                 udfscriptlines: [],
@@ -13848,5 +13831,5 @@
     ],
     udfscriptartifacts: [],
   },
-  hash: 'MgwbdLunH9yVjqB8NeC/qJx/zuYKSmAk',
+  hash: '/6YlmgzbRo/YsOGHvNGt3N+0FUAeaWUG',
 }

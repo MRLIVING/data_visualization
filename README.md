@@ -1,9 +1,7 @@
 # Data Visualization
 
 ## Overview
-![](https://raw.githubusercontent.com/MRLIVING/data_visualization/master/doc/img/overview_datavis.PNG)
-
-
+![](https://github.com/MRLIVING/data_visualization/blob/master/doc/img/overview_datavis.PNG?raw=true)
 
 ## Prepare and Transform data into Bigquery via. [Dataprep](https://cloud.google.com/dataprep)
 

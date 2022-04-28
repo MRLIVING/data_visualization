@@ -20,6 +20,7 @@
   * [Use blending to reaggregate data](https://support.google.com/datastudio/answer/9429470?hl=en&ref_topic=9061419)
   * [Conditional AVG - CASE WHEN](https://support.google.com/datastudio/answer/7583518?hl=en)
   * [Dynamic cluster of dimension values for interactive statistics grouping](https://www.wissi.fr/blog/analytics/20210909/google-data-studio-dynamic-cluster-of-dimension-values-for-interactive-statistics-grouping/)
+  * [Resize column with to fit data](https://webapps.stackexchange.com/questions/138612/how-to-make-the-width-fit-to-text-in-google-data-studio)
   
 * [Schema.org](https://schema.org/)
   * [Order  specification](https://support.google.com/merchants/answer/9130936)

@@ -13,7 +13,7 @@ const app = express();
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-//exports.chk_item_qty_onorder_openpurch = 
+//exports.chk_item_qty_onorder_openpurchase = 
 app.get('/', 
 async (req, res) => {
   const BQ_LOCATION = 'asia-east1';

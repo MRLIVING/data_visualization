@@ -20,6 +20,8 @@ async (req, res) => {
   const   DatasetID = 'SAP_chk';
   const     TableID = 'chk_item_qty_onorder_openpurch';
 
+  let res_content = '';
+
   dotenv.config();
 
   let sqlConfig = {
@@ -163,13 +165,15 @@ if (e.ItemCode == 'CS-23-00040') {
     else {
       console.info('Found no item.');
     }
+
+    res_content = 'Check item quantity equality according to OnOrder, OpenPurchase, and OpenTransfer complete.';
+    console.log(res_content);
   }
   catch (err) {
+      res_content = err;
       console.error(err);
   }
   
-  let res_content = 'Check item quantity equality according to OnOrder, OpenPurchase, and OpenTransfer complete.';
-  console.info(res_content);
   res.status(200).send(res_content);  
 });
 

@@ -159,6 +159,8 @@ async (req, res) => {
           grand_total as m2_grandTotal,
           DocTotal as sap_ordr_docTotal,
           payTotal as sap_orct_payTotal,
+          ABS(grand_total - DocTotal) AS diff_m2_ordr,
+          ABS(DocTotal - payTotal) AS diff_ordr_orct,
           created_at as m2_create_ts,
           updated_at as m2_update_ts
         FROM

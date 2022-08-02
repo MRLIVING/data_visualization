@@ -9,7 +9,7 @@
 
 ## Data Studio
 
-
+## [Cloud Function](https://github.com/MRLIVING/Becca/wiki/GCP-Cloud-Functions)
 
 
 ## Reference

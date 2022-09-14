@@ -1,9 +1,10 @@
 # Data Visualization
 
 ## Overview
+### On going...
 ![image](https://user-images.githubusercontent.com/3777869/190057299-4fb4bcaf-adc4-495d-b441-d493fc7fe7ea.png)
 
-
+### Current flow chart
 ![](https://github.com/MRLIVING/data_visualization/blob/master/doc/img/overview_datavis.PNG?raw=true)
 
 ## Prepare and Transform data into Bigquery via. [Dataprep](https://cloud.google.com/dataprep)
